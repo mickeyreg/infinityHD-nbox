@@ -1,7 +1,7 @@
   <!--/* EPG SELECTION BIGPICON RIGHT -->
   <screen name="EPGSelection" position="0,0" size="1280,720" title="EPG Selection" flags="wfNoBorder">
     <eLabel position="60,65" size="1177,2" backgroundColor="TextForeground" zPosition="2" />
-    <widget alphatest="blend" position="63,80" render="Picon" size="220,132" source="Event" transparent="1" zPosition="1">
+    <widget alphatest="blend" position="63,80" render="inHDBigPicon" size="220,132" source="Event" transparent="1" zPosition="1">
       <convert type="inHDRefString">CurrentRef</convert>
     </widget>
     <widget source="Service" render="Label" position="60,25" size="605,35" font="Bold; 28" noWrap="1" backgroundColor="BackTransparent" transparent="1" halign="left" zPosition="1">
@@ -12,15 +12,14 @@
       <convert type="inHDClockToText">Format:%A - %d.%m.%Y - %H:%M</convert>
     </widget>
     <widget source="Event" render="Label" position="63,255" zPosition="1" size="500,368" font="EPGSelDesc; 24" foregroundColor="TextLightDimmed" backgroundColor="BackTransparent" transparent="1" valign="top">
-      <convert type="EventName">ExtendedDescription</convert>
+      <convert type="EventName">FullDescription</convert>
     </widget>
     <widget source="Service" render="Label" position="298,85" zPosition="1" size="265,60" font="Bold; 24" halign="left" valign="top">
       <convert type="ServiceName">Name</convert>
     </widget>
-    <widget source="Event" render="Label" position="298,159" zPosition="1" size="70,30" font="Bold; 24" backgroundColor="BackTransparent" transparent="1" halign="right">
+    <widget source="Event" render="Label" position="298,159" zPosition="1" size="75,30" font="Bold; 24" backgroundColor="BackTransparent" transparent="1" halign="left">
       <convert type="EventTime">StartTime</convert>
-      <convert type="ClockToText">
-      </convert>
+      <convert type="ClockToText">Format:%H:%M</convert>
     </widget>
     <widget source="Event" render="Label" position="374,159" zPosition="1" size="90,30" font="Bold; 24" backgroundColor="BackTransparent" transparent="1">
       <convert type="EventTime">EndTime</convert>
