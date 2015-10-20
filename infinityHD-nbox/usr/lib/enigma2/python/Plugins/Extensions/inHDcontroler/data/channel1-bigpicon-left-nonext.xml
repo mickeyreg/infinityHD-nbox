@@ -18,7 +18,7 @@
     <widget position="440,640" size="200,36" name="key_green" font="Bold;19" halign="center" valign="center" backgroundColor="KeyGreenBack" transparent="1" zPosition="3" />
     <widget position="640,640" size="200,36" name="key_yellow" font="Bold;19" halign="center" valign="center" backgroundColor="KeyYellowBack" transparent="1" zPosition="3" />
     <widget position="840,640" size="200,36" name="key_blue" font="Bold;19" halign="center" valign="center" backgroundColor="KeyBlueBack" transparent="1" zPosition="3" />
-    <widget source="ServiceEvent" render="inHDBigPicon" position="1017,80" size="220,132" zPosition="10" alphatest="blend" transparent="1">
+    <widget source="ServiceEvent" render="Picon" position="1017,80" size="220,132" zPosition="10" alphatest="blend" transparent="1">
       <!--  <convert type="ServiceName">Name</convert>-->
       <convert type="inHDRefString">ServicelistRef</convert>
     </widget>
@@ -28,7 +28,7 @@
     <widget source="ServiceEvent" render="Label" position="737,220" zPosition="1" size="500,30" font="Bold; 24" valign="top" foregroundColor="TextHighlight" backgroundColor="BackTransparent" transparent="1">
       <convert type="EventName">Name</convert>
     </widget>
-    <widget source="ServiceEvent" render="Label" position="737,159" zPosition="1" size="70,30" font="Bold; 24" backgroundColor="BackTransparent" transparent="1" halign="left">
+    <widget source="ServiceEvent" render="Label" position="737,159" zPosition="1" size="75,30" font="Bold; 24" backgroundColor="BackTransparent" transparent="1" halign="right">
       <convert type="EventTime">StartTime</convert>
       <convert type="ClockToText">Format:%H:%M</convert>
     </widget>
