@@ -134,7 +134,7 @@
     <widget position="407,530" size="714,40" source="session.CurrentService" render="Label" font="Bold; 33" valign="bottom" halign="left" noWrap="1" backgroundColor="Black" shadowColor="#000000" shadowOffset="-1,-1" transparent="1" foregroundColor="TextHighlight">
       <convert type="ServiceName">Name</convert>
     </widget>
-    <widget source="session.CurrentService" render="inHDBigPicon" position="78,529" size="220,132" zPosition="4" alphatest="blend" transparent="1">
+    <widget source="session.CurrentService" render="Picon" position="78,529" size="220,132" zPosition="4" alphatest="blend" transparent="1">
       <convert type="ServiceName">Reference</convert>
     </widget>
     <widget position="316,583" size="85,35" source="session.Event_Now" render="Label" font="Regular; 28" valign="bottom" backgroundColor="BackTransparent" shadowColor="#000000" shadowOffset="-1,-1" transparent="1" halign="left">
@@ -364,14 +364,14 @@
     <widget position="440,640" size="200,36" name="key_green" font="Bold;19" halign="center" valign="center" backgroundColor="KeyGreenBack" transparent="1" zPosition="3" />
     <widget position="640,640" size="200,36" name="key_yellow" font="Bold;19" halign="center" valign="center" backgroundColor="KeyYellowBack" transparent="1" zPosition="3" />
     <widget position="840,640" size="200,36" name="key_blue" font="Bold;19" halign="center" valign="center" backgroundColor="KeyBlueBack" transparent="1" zPosition="3" />
-    <widget source="ServiceEvent" render="inHDBigPicon" position="63,80" size="220,132" zPosition="10" alphatest="blend" transparent="1">
+    <widget source="ServiceEvent" render="Picon" position="63,80" size="220,132" zPosition="10" alphatest="blend" transparent="1">
       <!--  <convert type="ServiceName">Name</convert>-->
       <convert type="inHDRefString">ServicelistRef</convert>
     </widget>
     <widget source="ServiceEvent" render="Label" position="298,85" zPosition="1" size="265,60" font="Bold; 24" halign="left" valign="top">
       <convert type="ServiceName">Name</convert>
     </widget>
-    <widget source="ServiceEvent" render="Label" position="298,159" zPosition="1" size="70,30" font="Bold; 24" backgroundColor="BackTransparent" transparent="1" halign="right">
+    <widget source="ServiceEvent" render="Label" position="298,159" zPosition="1" size="75,30" font="Bold; 24" backgroundColor="BackTransparent" transparent="1" halign="right">
       <convert type="EventTime">StartTime</convert>
       <convert type="ClockToText">Format:%H:%M</convert>
     </widget>
@@ -423,10 +423,10 @@
     />
   </screen>
   <!-- CHANNEL SELECTION - STOP -->
-    <!--/* EPG SELECTION BIGPICON RIGHT -->
+  <!--/* EPG SELECTION BIGPICON RIGHT -->
   <screen name="EPGSelection" position="0,0" size="1280,720" title="EPG Selection" flags="wfNoBorder">
     <eLabel position="60,65" size="1177,2" backgroundColor="TextForeground" zPosition="2" />
-    <widget alphatest="blend" position="63,80" render="inHDBigPicon" size="220,132" source="Event" transparent="1" zPosition="1">
+    <widget alphatest="blend" position="63,80" render="Picon" size="220,132" source="Event" transparent="1" zPosition="1">
       <convert type="inHDRefString">CurrentRef</convert>
     </widget>
     <widget source="Service" render="Label" position="60,25" size="605,35" font="Bold; 28" noWrap="1" backgroundColor="BackTransparent" transparent="1" halign="left" zPosition="1">
@@ -442,7 +442,7 @@
     <widget source="Service" render="Label" position="298,85" zPosition="1" size="265,60" font="Bold; 24" halign="left" valign="top">
       <convert type="ServiceName">Name</convert>
     </widget>
-    <widget source="Event" render="Label" position="298,159" zPosition="1" size="75,30" font="Bold; 24" backgroundColor="BackTransparent" transparent="1" halign="left">
+    <widget source="Event" render="Label" position="298,159" zPosition="1" size="75,30" font="Bold; 24" backgroundColor="BackTransparent" transparent="1" halign="right">
       <convert type="EventTime">StartTime</convert>
       <convert type="ClockToText">Format:%H:%M</convert>
     </widget>
@@ -467,7 +467,56 @@
     <widget position="840,640" size="200,36" name="key_blue" font="Bold;19" halign="center" valign="center" backgroundColor="KeyBlueBack" transparent="1" zPosition="3" />
     <widget position="581,82" size="656,543" name="list" transparent="1" itemHeight="30" zPosition="2" scrollbarMode="showOnDemand" />
   </screen>
+   <!-- EPG Search -->
+  <screen name="EPGSearch" title="EPG Search" position="0,0" size="1280,720" flags="wfNoBorder">
+    <eLabel position="60,65" size="1177,2" backgroundColor="TextForeground" zPosition="2" />
+    <ePixmap position="1220,35" size="14,14" pixmap="infinityHD-nbox/icons/clock.png" alphatest="on" zPosition="2" />
+    <widget source="global.CurrentTime" render="Label" position="718,25" zPosition="0" size="493,35" font="Bold;28" halign="right" transparent="1" backgroundColor="BackTransparent" foregroundColor="ClockCorner">
+      <convert type="inHDClockToText">Format:%A - %d.%m.%Y - %H:%M</convert>
+    </widget>
+    <eLabel position="60,25" size="605,35" text="EPG Search" halign="left" font="Bold; 28" transparent="1" zPosition="2" />
+    <widget source="Event" render="Label" position="63,80" zPosition="1" size="500,32" font="Bold;24" valign="top" foregroundColor="TextHighlight" backgroundColor="BackTransparent" transparent="1">
+      <convert type="EventName">Name</convert>
+    </widget>
+    <widget source="Event" render="Label" position="63,114" zPosition="1" size="75,30" font="Bold;24" backgroundColor="BackTransparent" transparent="1" halign="right">
+      <convert type="EventTime">StartTime</convert>
+      <convert type="ClockToText">Format:%H:%M</convert>
+    </widget>
+    <widget source="Event" render="Label" position="137,114" zPosition="1" size="90,30" font="Bold;24" backgroundColor="BackTransparent" transparent="1">
+      <convert type="EventTime">EndTime</convert>
+      <convert type="ClockToText">Format:- %H:%M</convert>
+    </widget>
+    <widget source="Event" render="Label" position="63,150" zPosition="1" size="500,473" font="EPGSelDesc;24" foregroundColor="TextLightDimmed" backgroundColor="BackTransparent" transparent="1" valign="top">
+      <convert type="EventName">FullDescription</convert>
+    </widget>
+    <widget source="Event" render="Progress" pixmap="infinityHD-nbox/progressnbox.png" position="238,127" zPosition="3" size="315,3" transparent="1">
+      <convert type="EventTime">Progress</convert>
+    </widget>
+    <eLabel name="ProgressbarBack" position="238,128" size="315,1" backgroundColor="ProgressbarBack" zPosition="2" />
+    <ePixmap position="240,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_red.png" alphatest="on" zPosition="2" />
+    <ePixmap position="440,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_green.png" alphatest="on" zPosition="2" />
+    <ePixmap position="640,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_yellow.png" alphatest="on" zPosition="2" />
+    <ePixmap position="840,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_blue.png" alphatest="on" zPosition="2" />
+    <widget position="240,640" size="200,36" name="key_red" font="Bold;19" halign="center" valign="center" backgroundColor="KeyRedBack" transparent="1" zPosition="3" />
+    <widget position="440,640" size="200,36" name="key_green" font="Bold;19" halign="center" valign="center" backgroundColor="KeyGreenBack" transparent="1" zPosition="3" />
+    <widget position="640,640" size="200,36" name="key_yellow" font="Bold;19" halign="center" valign="center" backgroundColor="KeyYellowBack" transparent="1" zPosition="3" />
+    <widget position="840,640" size="200,36" name="key_blue" font="Bold;19" halign="center" valign="center" backgroundColor="KeyBlueBack" transparent="1" zPosition="3" />
+    <widget position="581,82" size="656,543" name="list" transparent="1" itemHeight="30" zPosition="2" scrollbarMode="showOnDemand" />
+  </screen>
+  <!-- EPG Search Setup -->
+  <screen name="EPGSearchSetup" title="EPGSearch Setup" position="center,center" size="560,500">
+	<ePixmap pixmap="skin_default/buttons/red.png" position="0,0" zPosition="0" size="140,40" transparent="1" alphatest="on" />
+	<ePixmap pixmap="skin_default/buttons/green.png" position="140,0" zPosition="0" size="140,40" transparent="1" alphatest="on" />
+	<ePixmap pixmap="skin_default/buttons/yellow.png" position="280,0" zPosition="0" size="140,40" transparent="1" alphatest="on" />
+	<ePixmap pixmap="skin_default/buttons/blue.png" position="420,0" zPosition="0" size="140,40" transparent="1" alphatest="on" />
+	<widget render="Label" source="key_red" position="0,0" size="140,40" zPosition="5" valign="center" halign="center" backgroundColor="red" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+	<widget render="Label" source="key_green" position="140,0" size="140,40" zPosition="5" valign="center" halign="center" backgroundColor="red" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+    <widget source="help" render="Label" position="20,350" size="520,140" backgroundColor="background" transparent="1" font="Regular;20" />
+    <widget name="config" position="20,50" size="520,290" scrollbarMode="showOnDemand" />
+  </screen>
+  <!-- EPG Search */-->
   <!-- EPG SELECTION BIGPICON RIGHT */-->
+
   <!--/* EVENTVIEW NOPICON -->
   <screen name="EventView" position="0,0" size="1280,720" title="Eventview" flags="wfNoBorder">
     <eLabel position="60,65" size="1177,2" backgroundColor="TextForeground" zPosition="2" />
@@ -489,15 +538,20 @@
     <widget name="channel" position="60,25" size="605,35" font="Bold; 28" halign="left" transparent="1" zPosition="2" />
   </screen>
   <!-- EVENTVIEW NOPICON */-->
-  <!--/* NUMBERZAP CENTER -->
+  <!--/* NumberZap/NumberZapExt Center -->
   <screen name="NumberZap" position="440,242" size="400,135" flags="wfNoBorder">
     <widget name="number" position="96,13" size="200,60" font="Bold; 55" halign="center" valign="center" />
-    <widget name="servicename" position="15,82" size="360,33" font="Bold; 31" valign="center" halign="center" foregroundColor="TextHighlight">
-    </widget>
+    <widget name="servicename" position="15,82" size="360,36" font="Bold; 31" valign="center" halign="center" foregroundColor="TextHighlight" />
   </screen>
-  <!-- NUMBERZAP CENTER */-->
+<screen name="NumberZapExt" position="315,277" size="650,165" flags="wfNoBorder">
+  <widget name="chPicon" position="20,17" size="220,132" transparent="1" zPosition="1" alphatest="blend" />
+  <widget name="chNum" position="260,17" size="200,40" halign="left" font="Bold; 36" transparent="1" />
+  <widget name="chName" position="260,62" size="360,36" halign="left" font="Bold; 31" noWrap="1" transparent="1" foregroundColor="TextHighlight" />
+  <widget name="chBouq" position="260,110" size="360,36" halign="left" font="Bold; 31" noWrap="1" transparent="1" foregroundColor="TextHighlight2" />
+</screen>
+  <!-- NumberZap/NumberZapExt Center */--> 
   <!--/* MoviePlayer BigPicon -->
-  <screen name="MoviePlayer" position="0,4" size="1280,720" title="InfoBar" backgroundColor="Transparent" flags="wfNoBorder" zPosition="-2">
+  <screen name="MoviePlayer" position="0,0" size="1280,720" title="InfoBar" backgroundColor="Transparent" flags="wfNoBorder">
     <eLabel position="899,21" size="321,66" backgroundColor="BackTransparent" zPosition="-1" />
     <widget source="global.CurrentTime" render="Label" position="1010,21" size="200,70" font="Bold; 55" valign="top" halign="right" backgroundColor="Black" transparent="1" foregroundColor="ClockInfobar">
       <convert type="ClockToText">Format:%H:%M</convert>
@@ -519,7 +573,7 @@
       <convert type="ServicePosition">Length,ShowHours</convert>
     </widget>
     <!-- Picon /-->
-    <widget source="session.CurrentService" render="inHDBigPicon" position="53,568" size="220,132" zPosition="4" alphatest="blend" transparent="1">
+    <widget source="session.CurrentService" render="Picon" position="53,568" size="220,132" zPosition="4" alphatest="blend" transparent="1">
       <convert type="inHDMovieReference">Reference</convert>
     </widget>
     <widget source="session.RecordState" render="Pixmap" pixmap="infinityHD-nbox/icons/i_rec_kl.png" position="1055,605" zPosition="3" size="36,36" alphatest="on">
@@ -581,7 +635,7 @@
     <convert type="MovieInfo">FileSize</convert>
   </widget>
   <widget position="817,600" size="420,26" name="freeDiskSpace" font="Bold; 24" halign="right" backgroundColor="BackTransparent" transparent="1" zPosition="3" />
-  <widget source="Service" render="inHDBigPicon" position="695,81" zPosition="4" size="220,132" transparent="1" alphatest="blend">
+  <widget source="Service" render="Picon" position="695,81" zPosition="4" size="220,132" transparent="1" alphatest="blend">
     <convert type="inHDMovieReference" />
   </widget>
 <widget position="932,85" size="305,94" source="Service" render="Label" transparent="1" zPosition="3" font="Bold; 26" halign="left" foregroundColor="TextHighlight" valign="top">
@@ -590,132 +644,16 @@
 </screen>
   <!-- MovieSelection BigPicon */-->
   <!--/* MUTE -->
-  <screen name="Mute" zPosition="1" position="0,0" size="109,75" title="Mute" backgroundColor="Transparent" flags="wfNoBorder">
-	<ePixmap position="0,0" size="109,75" pixmap="infinityHD-nbox/volume/mute_new.png" alphatest="on" />
-  </screen>
+<screen name="Mute" zPosition="1" position="0,0" size="130,100" title="Mute" backgroundColor="BackTransparent" flags="wfNoBorder">
+  <ePixmap position="0,0" size="130,100" pixmap="infinityHD-nbox/volume/mute50.png" alphatest="blend" transparent="1" />
+</screen>
   <!-- MUTE */-->
   <!--/* VOLUME VERTICAL -->
-  <screen name="Volume" position="0,184" size="109,293" title="Volume" flags="wfNoBorder" zPosition="10" backgroundColor="Transparent">
-	<ePixmap position="0,0" zPosition="-1" size="109,293" pixmap="infinityHD-nbox/volume/volumebar_h_back.png" alphatest="on" />
-	<widget name="Volume" position="37,19" size="33,207" zPosition="1" pixmap="infinityHD-nbox/volume/volumebar_h_fore.png" transparent="1" orientation="orBottomToTop" alphatest="blend"  />
-  </screen>
+<screen name="Volume" position="0,210" size="130,300" title="Volume" flags="wfNoBorder" zPosition="10" backgroundColor="BackTransparent">
+  <ePixmap position="0,0" zPosition="-1" size="130,300" pixmap="infinityHD-nbox/volume/volumebar50_back.png" alphatest="blend" transparent="1" />
+  <widget name="Volume" position="37,24" size="59,200" zPosition="1" pixmap="infinityHD-nbox/volume/volumebar50_over.png" transparent="1" orientation="orBottomToTop" alphatest="blend" />
+</screen>
   <!-- VOLUME VERTICAL */-->
-    <!--/* GraphMultiEPG -->
-  <screen name="GraphMultiEPG" position="0,0" size="1280,720" title="Electronic Program Guide" flags="wfNoBorder">
-    <eLabel position="60,25" size="605,35" text="Electronic Program Guide" halign="left" font="Bold; 28" transparent="1" zPosition="2" />
-    <eLabel position="60,65" size="1177,2" backgroundColor="TextForeground" zPosition="2" />
-    <eLabel position="60,331" size="1177,2" backgroundColor="Stripe" />
-    <ePixmap position="1220,35" size="14,14" pixmap="infinityHD-nbox/icons/clock.png" alphatest="on" zPosition="2" />
-    <widget source="global.CurrentTime" render="Label" position="718,25" zPosition="0" size="493,35" font="Bold; 28" halign="right" transparent="1" backgroundColor="BackTransparent" foregroundColor="TextHighlight2">
-      <convert type="inHDClockToText">Format:%A - %d.%m.%Y - %H:%M</convert>
-    </widget>
-    <widget name="timeline_text" position="60,342" size="1177,30" transparent="1" backgroundColor="BackTransparent" font="Bold; 22" />
-    <widget name="list" position="60,372" size="1177,252" transparent="1"
-    itemHeight="42"
-    EntryFont="Regular; 22"
-    ServiceFont="Bold; 22"
-    ServiceNamePadding="3"
-    EventNamePadding="8"
-    EventBorderWidth="1"
-    ServiceBorderWidth="0"
-    ServiceForegroundColorSelected="TextHighlight2"
-    ServiceForegroundColor="TextHighlight2"
-    EntryForegroundColorSelected="#F3F3F3"
-    EntryForegroundColor="#F3F3F3"
-    ServiceBackgroundColor="BackTransparent"
-    ServiceBackgroundColorSelected="#12474747"
-    ServiceBackgroundColorRecording="BackTransparent"
-    ServiceForegroundColorRecording="TextHighlight2"
-    EntryForegroundColorNow="#F3F3F3"
-    EntryBorderColor="BackTransparent"
-    ServiceBorderColor="BackTransparent"
-    EntryBackgroundColorSelected="#141C1C62"
-    EntryBackgroundColor="#12474747"
-    EntryBackgroundColorNow="#122C2C2C"
-    />
-    <widget name="timeline_now" position="60,372" zPosition="2" size="1,252" pixmap="infinityHD-nbox/timeline-now.png" alphatest="on" />
-    <ePixmap position="240,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_red.png" alphatest="on" zPosition="2" />
-    <ePixmap position="440,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_green.png" alphatest="on" zPosition="2" />
-    <ePixmap position="640,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_yellow.png" alphatest="on" zPosition="2" />
-    <ePixmap position="840,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_blue.png" alphatest="on" zPosition="2" />
-    <widget position="240,640" size="200,36" name="key_red" font="Bold;19" halign="center" valign="center" backgroundColor="KeyRedBack" transparent="1" zPosition="3" />
-    <widget position="440,640" size="200,36" name="key_green" font="Bold;19" halign="center" valign="center" backgroundColor="KeyGreenBack" transparent="1" zPosition="3" />
-    <widget position="640,640" size="200,36" name="key_yellow" font="Bold;19" halign="center" valign="center" backgroundColor="KeyYellowBack" transparent="1" zPosition="3" />
-    <widget position="840,640" size="200,36" name="key_blue" font="Bold;19" halign="center" valign="center" backgroundColor="KeyBlueBack" transparent="1" zPosition="3" />
-    <widget name="timeline0" position="0,372" zPosition="1" size="0,252" pixmap="skin_default/timeline.png" />
-    <widget name="timeline1" position="0,372" zPosition="1" size="0,252" pixmap="skin_default/timeline.png" />
-    <widget name="timeline2" position="0,372" zPosition="1" size="0,252" pixmap="skin_default/timeline.png" />
-    <widget name="timeline3" position="0,372" zPosition="1" size="0,252" pixmap="skin_default/timeline.png" />
-    <widget name="timeline4" position="0,372" zPosition="1" size="0,252" pixmap="skin_default/timeline.png" />
-    <widget name="timeline5" position="0,372" zPosition="1" size="0,252" pixmap="skin_default/timeline.png" />
-    <widget source="Event" render="Label" position="383,77" zPosition="1" size="850,30" font="Bold; 24" valign="center" foregroundColor="TextHighlight" backgroundColor="BackTransparent" transparent="1" noWrap="1">
-      <convert type="EventName">Name</convert>
-    </widget>
-    <widget source="Event" render="Label" position="70,115" zPosition="1" size="1157,205" font="GraphDesc; 24" foregroundColor="TextLightDimmed" backgroundColor="BackTransparent" transparent="1" valign="top">
-      <convert type="EventName">FullDescription</convert>
-    </widget>
-    <widget source="Event" render="Label" position="60,77" zPosition="1" size="75,30" font="Bold; 24" backgroundColor="BackTransparent" transparent="1" halign="left">
-      <convert type="EventTime">StartTime</convert>
-      <convert type="ClockToText">Format:%H:%M</convert>
-    </widget>
-    <widget source="Event" render="Label" position="132,77" zPosition="1" size="90,30" font="Bold; 24" backgroundColor="BackTransparent" transparent="1">
-      <convert type="EventTime">EndTime</convert>
-      <convert type="ClockToText">Format:- %H:%M</convert>
-    </widget>
-    <widget source="Event" render="Progress" position="229,90" size="142,3" pixmap="infinityHD-nbox/progressnbox.png" transparent="1" zPosition="5">
-      <convert type="EventTime">Progress</convert>
-    </widget>
-
-    <eLabel name="ProgressbarBack" position="229,91" size="142,1" backgroundColor="ProgressbarBack" zPosition="4" />
-  </screen>
-  <screen name="GraphMultiEPGList" position="0,0" size="1280,720" title="Electronic Program Guide" flags="wfNoBorder">
-    <eLabel position="60,25" size="605,35" text="Electronic Program Guide" halign="left" font="Bold; 28" transparent="1" zPosition="2" />
-    <eLabel position="60,65" size="1177,2" backgroundColor="TextForeground" zPosition="2" />
-    <ePixmap position="1220,35" size="14,14" pixmap="infinityHD-nbox/icons/clock.png" alphatest="on" zPosition="2" />
-    <widget source="global.CurrentTime" render="Label" position="718,25" zPosition="0" size="493,35" font="Bold; 28" halign="right" transparent="1" backgroundColor="BackTransparent" foregroundColor="TextHighlight2">
-      <convert type="inHDClockToText">Format:%A - %d.%m.%Y - %H:%M</convert>
-    </widget>
-    <widget name="timeline_text" position="60,75" size="1177,30" transparent="1" backgroundColor="BackTransparent" font="Bold; 22" />
-    <widget name="list" position="60,110" size="1177,504" transparent="1"
-    itemHeight="42"
-    EntryFont="Regular; 22"
-    ServiceFont="Bold; 22"
-    ServiceNamePadding="3"
-    EventNamePadding="8"
-    EventBorderWidth="1"
-    ServiceBorderWidth="0"
-    ServiceForegroundColorSelected="TextHighlight2"
-    ServiceForegroundColor="TextHighlight2"
-    EntryForegroundColorSelected="#F3F3F3"
-    EntryForegroundColor="#F3F3F3"
-    ServiceBackgroundColor="BackTransparent"
-    ServiceBackgroundColorSelected="#12474747"
-    ServiceBackgroundColorRecording="BackTransparent"
-    ServiceForegroundColorRecording="TextHighlight2"
-    EntryForegroundColorNow="#F3F3F3"
-    EntryBorderColor="BackTransparent"
-    ServiceBorderColor="BackTransparent"
-    EntryBackgroundColorSelected="#141C1C62"
-    EntryBackgroundColor="#12474747"
-    EntryBackgroundColorNow="#122C2C2C"
-    />
-    <widget name="timeline_now" position="60,110" zPosition="2" size="1,504" pixmap="infinityHD-nbox/timeline-now.png" alphatest="on" />
-    <ePixmap position="240,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_red.png" alphatest="on" zPosition="2" />
-    <ePixmap position="440,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_green.png" alphatest="on" zPosition="2" />
-    <ePixmap position="640,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_yellow.png" alphatest="on" zPosition="2" />
-    <ePixmap position="840,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_blue.png" alphatest="on" zPosition="2" />
-    <widget position="240,640" size="200,36" name="key_red" font="Bold;19" halign="center" valign="center" backgroundColor="KeyRedBack" transparent="1" zPosition="3" />
-    <widget position="440,640" size="200,36" name="key_green" font="Bold;19" halign="center" valign="center" backgroundColor="KeyGreenBack" transparent="1" zPosition="3" />
-    <widget position="640,640" size="200,36" name="key_yellow" font="Bold;19" halign="center" valign="center" backgroundColor="KeyYellowBack" transparent="1" zPosition="3" />
-    <widget position="840,640" size="200,36" name="key_blue" font="Bold;19" halign="center" valign="center" backgroundColor="KeyBlueBack" transparent="1" zPosition="3" />
-    <widget name="timeline0" position="0,110" zPosition="1" size="0,504" pixmap="skin_default/timeline.png" />
-    <widget name="timeline1" position="0,110" zPosition="1" size="0,504" pixmap="skin_default/timeline.png" />
-    <widget name="timeline2" position="0,110" zPosition="1" size="0,504" pixmap="skin_default/timeline.png" />
-    <widget name="timeline3" position="0,110" zPosition="1" size="0,504" pixmap="skin_default/timeline.png" />
-    <widget name="timeline4" position="0,110" zPosition="1" size="0,504" pixmap="skin_default/timeline.png" />
-    <widget name="timeline5" position="0,110" zPosition="1" size="0,504" pixmap="skin_default/timeline.png" />
-  </screen>
-  <!-- GraphMultiEPG */-->
   <!--/* VIRTUAL ZAP BIGPICON CLASSIC -->
   <screen backgroundColor="Transparent" flags="wfNoBorder" name="VirtualZapPiconNoPiP" position="center,0" size="1280,720" title="Virtual Zap">
     <eLabel position="899,21" size="321,66" backgroundColor="BackTransparent" zPosition="-1" />
@@ -749,6 +687,116 @@
     <widget name="vzProgress" position="315,572" size="807,3" pixmap="infinityHD-nbox/progressnbox.png" transparent="1" zPosition="5" />
   </screen>
   <!-- VIRTUAL ZAP BIGPICON CLASSIC */-->
+  <!--/* GraphMultiEPG -->
+  <screen name="GraphMultiEPG" position="fill" title="Electronic Program Guide" flags="wfNoBorder">
+    <eLabel position="60,25" size="605,35" text="Electronic Program Guide" halign="left" font="Bold; 28" transparent="1" zPosition="2" />
+    <eLabel position="60,65" size="1177,2" backgroundColor="TextForeground" zPosition="2" />
+    <eLabel position="60,331" size="1177,2" backgroundColor="Stripe" />
+    <ePixmap position="1220,35" size="14,14" pixmap="infinityHD-nbox/icons/clock.png" alphatest="on" zPosition="2" />
+    <widget source="global.CurrentTime" render="Label" position="718,25" zPosition="0" size="493,35" font="Bold; 28" halign="right" transparent="1" backgroundColor="BackTransparent" foregroundColor="TextHighlight2">
+      <convert type="inHDClockToText">Format:%A - %d.%m.%Y - %H:%M</convert>
+    </widget>
+    <widget name="timeline_text" position="60,342" size="1177,30" transparent="1" backgroundColor="BackTransparent" font="Bold; 22" />
+    <widget name="list" position="60,372" size="1177,252" transparent="1" EntryFont="Regular; 22" ServiceFont="Bold; 22" ServiceNamePadding="3" EventNamePadding="8" EventBorderWidth="1" ServiceBorderWidth="1" EntryForegroundColorNow="#ffffff" EntryForegroundColor="TextLightDimmed" EntryForegroundColorSelected="#ffffff" ServiceForegroundColorRecording="#ffffff" />
+    <widget name="timeline_now" position="60,372" zPosition="2" size="4,252" pixmap="infinityHD-nbox/timeline-now.png" alphatest="on" />
+    <ePixmap position="240,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_red.png" alphatest="on" zPosition="2" />
+    <ePixmap position="440,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_green.png" alphatest="on" zPosition="2" />
+    <ePixmap position="640,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_yellow.png" alphatest="on" zPosition="2" />
+    <ePixmap position="840,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_blue.png" alphatest="on" zPosition="2" />
+    <widget position="240,640" size="200,36" name="key_red" font="Bold;19" halign="center" valign="center" backgroundColor="KeyRedBack" transparent="1" zPosition="3" />
+    <widget position="440,640" size="200,36" name="key_green" font="Bold;19" halign="center" valign="center" backgroundColor="KeyGreenBack" transparent="1" zPosition="3" />
+    <widget position="640,640" size="200,36" name="key_yellow" font="Bold;19" halign="center" valign="center" backgroundColor="KeyYellowBack" transparent="1" zPosition="3" />
+    <widget position="840,640" size="200,36" name="key_blue" font="Bold;19" halign="center" valign="center" backgroundColor="KeyBlueBack" transparent="1" zPosition="3" />
+    <widget name="timeline0" position="0,372" zPosition="1" size="0,252" pixmap="infinityHD-nbox/timeline.png" />
+    <widget name="timeline1" position="0,372" zPosition="1" size="0,252" pixmap="infinityHD-nbox/timeline.png" />
+    <widget name="timeline2" position="0,372" zPosition="1" size="0,252" pixmap="infinityHD-nbox/timeline.png" />
+    <widget name="timeline3" position="0,372" zPosition="1" size="0,252" pixmap="infinityHD-nbox/timeline.png" />
+    <widget name="timeline4" position="0,372" zPosition="1" size="0,252" pixmap="infinityHD-nbox/timeline.png" />
+    <widget name="timeline5" position="0,372" zPosition="1" size="0,252" pixmap="infinityHD-nbox/timeline.png" />
+    <widget source="Event" render="Label" position="383,77" zPosition="1" size="850,30" font="Bold; 24" valign="center" foregroundColor="TextHighlight" backgroundColor="BackTransparent" transparent="1" noWrap="1">
+      <convert type="EventName">Name</convert>
+    </widget>
+    <widget source="Event" render="Label" position="70,115" zPosition="1" size="1157,205" font="GraphDesc; 24" foregroundColor="TextLightDimmed" backgroundColor="BackTransparent" transparent="1" valign="top">
+      <convert type="EventName">FullDescription</convert>
+    </widget>
+    <widget source="Event" render="Label" position="60,77" zPosition="1" size="75,30" font="Bold; 24" backgroundColor="BackTransparent" transparent="1" halign="left">
+      <convert type="EventTime">StartTime</convert>
+      <convert type="ClockToText">Format:%H:%M</convert>
+    </widget>
+    <widget source="Event" render="Label" position="132,77" zPosition="1" size="90,30" font="Bold; 24" backgroundColor="BackTransparent" transparent="1">
+      <convert type="EventTime">EndTime</convert>
+      <convert type="ClockToText">Format:- %H:%M</convert>
+    </widget>
+    <widget source="Event" render="Progress" position="229,90" size="142,3" pixmap="infinityHD-nbox/progressnbox.png" transparent="1" zPosition="5">
+      <convert type="EventTime">Progress</convert>
+    </widget>
+    <eLabel name="ProgressbarBack" position="229,91" size="142,1" backgroundColor="ProgressbarBack" zPosition="4" />
+  </screen>
+  <screen name="GraphMultiEPGList" position="0,0" size="1280,720" title="Electronic Program Guide" flags="wfNoBorder">
+    <eLabel position="60,25" size="605,35" text="Electronic Program Guide" halign="left" font="Bold; 28" transparent="1" zPosition="2" />
+    <eLabel position="60,65" size="1177,2" backgroundColor="TextForeground" zPosition="2" />
+    <ePixmap position="1220,35" size="14,14" pixmap="infinityHD-nbox/icons/clock.png" alphatest="on" zPosition="2" />
+    <widget source="global.CurrentTime" render="Label" position="718,25" zPosition="0" size="493,35" font="Bold; 28" halign="right" transparent="1" backgroundColor="BackTransparent" foregroundColor="TextHighlight2">
+      <convert type="inHDClockToText">Format:%A - %d.%m.%Y - %H:%M</convert>
+    </widget>
+    <widget source="Event" render="Label" position="230,580" zPosition="1" size="850,30" font="Bold; 24" valign="center" foregroundColor="TextHighlight" backgroundColor="BackTransparent" transparent="1" noWrap="1">
+      <convert type="EventName">Name</convert>
+    </widget>
+    <widget source="Event" render="Label" position="60,580" zPosition="1" size="75,30" font="Bold; 24" backgroundColor="BackTransparent" transparent="1" halign="left">
+      <convert type="EventTime">StartTime</convert>
+      <convert type="ClockToText">Format:%H:%M</convert>
+    </widget>
+    <widget source="Event" render="Label" position="132,580" zPosition="1" size="90,30" font="Bold; 24" backgroundColor="BackTransparent" transparent="1">
+      <convert type="EventTime">EndTime</convert>
+      <convert type="ClockToText">Format:- %H:%M</convert>
+    </widget>
+    <widget name="timeline_text" position="60,75" size="1177,30" transparent="1" backgroundColor="BackTransparent" font="Bold; 22" />
+    <widget name="list" position="60,110" size="1177,460" transparent="1" EntryFont="Regular; 22" ServiceFont="Bold; 22" ServiceNamePadding="3" EventNamePadding="8" EventBorderWidth="1" ServiceBorderWidth="1" EntryForegroundColorNow="#ffffff" EntryForegroundColor="TextLightDimmed" EntryForegroundColorSelected="#ffffff" ServiceForegroundColorRecording="#ffffff" />
+    <widget name="timeline_now" position="60,110" zPosition="2" size="4,460" pixmap="infinityHD-nbox/timeline-now.png" alphatest="on" />
+    <ePixmap position="240,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_red.png" alphatest="on" zPosition="2" />
+    <ePixmap position="440,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_green.png" alphatest="on" zPosition="2" />
+    <ePixmap position="640,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_yellow.png" alphatest="on" zPosition="2" />
+    <ePixmap position="840,640" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_blue.png" alphatest="on" zPosition="2" />
+    <widget position="240,640" size="200,36" name="key_red" font="Bold;19" halign="center" valign="center" backgroundColor="KeyRedBack" transparent="1" zPosition="3" />
+    <widget position="440,640" size="200,36" name="key_green" font="Bold;19" halign="center" valign="center" backgroundColor="KeyGreenBack" transparent="1" zPosition="3" />
+    <widget position="640,640" size="200,36" name="key_yellow" font="Bold;19" halign="center" valign="center" backgroundColor="KeyYellowBack" transparent="1" zPosition="3" />
+    <widget position="840,640" size="200,36" name="key_blue" font="Bold;19" halign="center" valign="center" backgroundColor="KeyBlueBack" transparent="1" zPosition="3" />
+    <widget name="timeline0" position="0,110" zPosition="1" size="0,460" pixmap="infinityHD-nbox/timeline.png" alphatest="on" />
+    <widget name="timeline1" position="0,110" zPosition="1" size="0,460" pixmap="infinityHD-nbox/timeline.png" alphatest="on" />
+    <widget name="timeline2" position="0,110" zPosition="1" size="0,460" pixmap="infinityHD-nbox/timeline.png" alphatest="on" />
+    <widget name="timeline3" position="0,110" zPosition="1" size="0,460" pixmap="infinityHD-nbox/timeline.png" alphatest="on" />
+    <widget name="timeline4" position="0,110" zPosition="1" size="0,460" pixmap="infinityHD-nbox/timeline.png" alphatest="on" />
+    <widget name="timeline5" position="0,110" zPosition="1" size="0,460" pixmap="infinityHD-nbox/timeline.png" alphatest="on" />
+  </screen>
+  <!-- GraphMultiEPG */-->
+  <!--/* CutListEditor -->
+  <screen name="CutListEditor" position="0,0" size="1280,720" title="Cutlist editor" flags="wfNoBorder" backgroundColor="Transparent">
+  <ePixmap position="0,559" zPosition="-3" size="1280,720" pixmap="infinityHD-nbox/infobar_2.png" />
+  <!--eLabel position="0,0" zPosition="3" size="1280,720" backgroundColor="Transparent" /-->
+  <widget name="SeekState" position="60,60" zPosition="1" size="120,30" halign="center" font="Regular;25" valign="center" />
+  <eLabel position="1005,25" size="250,555" zPosition="2" backgroundColor="BackTransparent" />
+  <widget source="cutlist" render="Listbox" position="1015,35" size="230,530" zPosition="3" scrollbarMode="showOnDemand" enableWrapAround="1">
+    <convert type="TemplatedMultiContent">
+				{"template": [
+						MultiContentEntryText(size=(150, 20), text = 1, backcolor = MultiContentTemplateColor(3)),
+						MultiContentEntryText(pos=(150,0), size=(60, 20), text = 2, flags = RT_HALIGN_RIGHT, backcolor = MultiContentTemplateColor(3))
+					],
+				 "fonts": [gFont("Bold", 20)],
+				 "itemHeight": 25
+				}
+			</convert>
+  </widget>
+  <!--widget name="Video" position="479,124" zPosition="-10" size="696,377" /-->
+  <widget source="session.CurrentService" render="Label" position="100,605" size="692,40" font="Bold; 33" halign="left" valign="bottom" noWrap="1" backgroundColor="Black" transparent="1" foregroundColor="TextHighlight">
+      <convert type="ServiceName">Name</convert>
+  </widget>
+    <widget source="session.CurrentService" render="Label" position="1075,645" size="150,35" font="Regular; 28" halign="right" valign="bottom" backgroundColor="BackTransparent" shadowColor="Black" shadowOffset="-1,-1" transparent="1">
+      <convert type="ServicePosition">Position,Detailed</convert>
+    </widget>
+  <widget name="Timeline" position="100,660" size="965,3" zPosition="5" backgroundColor="KeyRed" pointer="skin_default/position_arrow.png:3,5" foregroundColor="ClockCorner" />
+  <!--eLabel name="ProgressbarBack" position="300,661" size="660,1" backgroundColor="ProgressbarBack" zPosition="3" /-->
+  </screen>
+  <!-- CutListEditor */-->
   <!--/* MENU -->
   <screen flags="wfNoBorder" name="menu_mainmenu" position="0,0" size="1280,720" title="Main menu">
     <widget font="Bold;32" position="675,130" render="Label" size="485,35" source="title" transparent="1" zPosition="2" />
@@ -928,6 +976,88 @@
     </widget>
   </screen>
   <!-- MENU */-->
+  <!--/* RADIO -->
+  <screen backgroundColor="Transparent" flags="wfNoBorder" name="RadioInfoBar" position="center,525" size="1280,200" title="InfoBar">
+    <ePixmap position="center,0" zPosition="1" size="1280,295" pixmap="infinityHD-nbox/infobar_2.png" />
+    <widget source="global.CurrentTime" render="Label" position="1080,30" zPosition="2" size="113,40" font="Bold; 33" halign="right" backgroundColor="Black" transparent="1" valign="bottom" foregroundColor="TextDimmed">
+      <convert type="ClockToText">%H:%M</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="764,30" zPosition="2" size="300,40" font="Bold; 33" halign="right" backgroundColor="Black" transparent="1" valign="bottom" foregroundColor="TextDimmed">
+      <convert type="inHDClockToText">Format:%d.%m.%Y</convert>
+    </widget>
+    <widget source="session.RecordState" render="Pixmap" pixmap="infinityHD-nbox/icons/i_rec_kl.png" position="1161,84" zPosition="3" size="36,36" alphatest="on">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.CurrentService" render="ChannelNumber" position="78,30" zPosition="2" size="90,40" font="Bold; 33" valign="bottom" halign="center" transparent="1" backgroundColor="Black" shadowColor="#000000" shadowOffset="-1,-1" noWrap="1" foregroundColor="TextHighlight">
+    </widget>
+    <widget position="175,30" zPosition="2" size="580,40" source="session.CurrentService" render="Label" font="Bold; 33" valign="bottom" halign="left" noWrap="1" backgroundColor="Black" shadowColor="#000000" shadowOffset="-1,-1" transparent="1" foregroundColor="TextHighlight">
+      <convert type="ServiceName">Name</convert>
+    </widget>
+    <widget position="78,83" zPosition="2" size="90,35" source="session.Event_Now" render="Label" font="Regular; 28" valign="bottom" backgroundColor="BackTransparent" shadowColor="#000000" shadowOffset="-1,-1" transparent="1" halign="left">
+      <convert type="EventTime">StartTime</convert>
+      <convert type="ClockToText">Format:%H:%M</convert>
+    </widget>
+    <widget position="175,83" zPosition="2" size="820,35" source="session.Event_Now" render="Label" font="Regular; 28" valign="bottom" noWrap="1" backgroundColor="BackTransparent" shadowColor="#000000" shadowOffset="-1,-1" transparent="1">
+      <convert type="EventName">Name</convert>
+    </widget>
+    <widget position="1001,83" zPosition="2" size="145,35" source="session.Event_Now" render="Label" font="Regular; 28" valign="bottom" backgroundColor="BackTransparent" shadowColor="#000000" shadowOffset="-1,-1" halign="right" transparent="1">
+      <convert type="EventTime">Remaining</convert>
+      <convert type="RemainingToText">InMinutes</convert>
+    </widget>
+    <widget position="78,124" zPosition="2" size="90,35" source="session.Event_Next" render="Label" font="Regular; 28" valign="bottom" backgroundColor="BackTransparent" foregroundColor="TextDimmed" transparent="1" halign="left">
+      <convert type="EventTime">StartTime</convert>
+      <convert type="ClockToText">Format:%H:%M</convert>
+    </widget>
+    <widget position="175,124" zPosition="2" size="820,35" source="session.Event_Next" render="Label" font="Regular; 28" valign="bottom" noWrap="1" backgroundColor="BackTransparent" foregroundColor="TextDimmed" transparent="1">
+      <convert type="EventName">Name</convert>
+    </widget>
+    <widget position="1001,124" zPosition="2" size="145,35" source="session.Event_Next" render="Label" font="Regular; 28" valign="bottom" backgroundColor="BackTransparent" foregroundColor="TextDimmed" halign="right" transparent="1">
+      <convert type="EventTime">Duration</convert>
+      <convert type="ClockToText">InMinutes</convert>
+    </widget>
+    <ePixmap pixmap="infinityHD-nbox/icons/i_crypt_no_kl.png" position="1161,124" size="36,36" zPosition="2" alphatest="on" />
+    <widget source="session.CurrentService" render="Pixmap" pixmap="infinityHD-nbox/icons/i_crypt_kl.png" position="1161,124" size="36,36" zPosition="3" alphatest="on">
+      <convert type="ServiceInfo">IsCrypted</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.Event_Now" render="Progress" pixmap="infinityHD-nbox/progressnbox.png" position="81,72" size="1060,3" transparent="1" backgroundColor="BackTransparent" zPosition="3">
+      <convert type="EventTime">Progress</convert>
+    </widget>
+    <eLabel name="ProgressbarBack" position="81,73" size="1060,1" backgroundColor="ProgressbarBack" zPosition="2" />
+  </screen>
+  
+  <screen backgroundColor="BackTransparent" name="ChannelSelectionRadio" title="Channel Selection" position="80,80" size="1120,430">
+    <ePixmap position="160,370" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_red.png" alphatest="on" zPosition="22" />
+    <ePixmap position="360,370" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_green.png" alphatest="on" zPosition="22" />
+    <ePixmap position="560,370" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_yellow.png" alphatest="on" zPosition="22" />
+    <ePixmap position="760,370" size="200,60" pixmap="infinityHD-nbox/buttons/button_200x60_blue.png" alphatest="on" zPosition="22" />
+    <widget position="160,370" size="200,36" name="key_red" font="Bold;19" halign="center" valign="center" backgroundColor="KeyRedBack" transparent="1" zPosition="23" />
+    <widget position="360,370" size="200,36" name="key_green" font="Bold;19" halign="center" valign="center" backgroundColor="KeyGreenBack" transparent="1" zPosition="23" />
+    <widget position="560,370" size="200,36" name="key_yellow" font="Bold;19" halign="center" valign="center" backgroundColor="KeyYellowBack" transparent="1" zPosition="23" />
+    <widget position="760,370" size="200,36" name="key_blue" font="Bold;19" halign="center" valign="center" backgroundColor="KeyBlueBack" transparent="1" zPosition="23" />
+
+    <widget position="15,5" size="1090,360" name="list" scrollbarMode="showOnDemand" transparent="1"
+    serviceItemHeight="33"
+
+    foregroundColorEvent="CS_Event"
+	foregroundColorEventSelected="CS_EventSelect"
+	colorEventProgressbar="CS_Progress"
+	colorEventProgressbarSelected="CS_ProgressSelect"
+	colorEventProgressbarBorder="CS_ProgressBorder"
+	colorEventProgressbarBorderSelected="CS_ProgressBorderSelect"
+	foregroundColorServiceNotAvail="CS_ServiceNotAvail"
+	foregroundColorMarked="CS_Marked"
+	foregroundColorMarkedSelected="CS_MarkedSelect"
+	backgroundColorMarked="CS_MarkedBack"
+	backgroundColorMarkedSelected="CS_MarkedBackSelect"
+	
+    serviceNumberFont="Bold;27"
+    serviceNameFont="Bold;27"
+    serviceInfoFont="Regular;25"
+    zPosition="22"
+    />
+  </screen>
+  <!-- RADIO */-->
   <screen name="About" position="250,68" size="780,610" title="About">
     <ePixmap position="115,0" size="546,202" pixmap="infinityHD-nbox/menu/infinityHD-nbox-logo.png" alphatest="blend" />
     <widget source="EnigmaVersion" render="Label" position="13,213" size="750,25" font="Bold;22" halign="center" backgroundColor="BackTransparent" transparent="1" />
@@ -1790,35 +1920,9 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y()))
       <convert type="StringList" />
     </widget>
   </screen>
-  <screen name="CutListEditor" position="0,0" size="1280,720" title="Cutlist editor" flags="wfNoBorder">
-    <eLabel position="80,125" size="300,420" zPosition="1" backgroundColor="Grey" />
-    <eLabel position="81,126" size="298,418" zPosition="2" backgroundColor="Black" />
-    <widget source="cutlist" render="Listbox" position="90,135" size="280,400" zPosition="3" scrollbarMode="showOnDemand" enableWrapAround="1">
-      <convert type="TemplatedMultiContent">
-				{"template": [
-						MultiContentEntryText(size=(135, 20), text = 1, backcolor = MultiContentTemplateColor(3)),
-						MultiContentEntryText(pos=(135,0), size=(145, 20), text = 2, flags = RT_HALIGN_RIGHT, backcolor = MultiContentTemplateColor(3))
-					],
-				 "fonts": [gFont("Bold", 18)],
-				 "itemHeight": 20
-				}
-			</convert>
-    </widget>
-    <eLabel position="479,124" zPosition="3" size="696,377" backgroundColor="Transparent" />
-    <widget name="Video" position="479,124" zPosition="-10" size="696,377" />
-    <widget source="session.CurrentService" render="Label" position="450,510" size="790,30" zPosition="3" font="Bold;24" halign="center" valign="center" backgroundColor="Black" transparent="1">
-      <convert type="ServiceName">Name</convert>
-    </widget>
-    <widget source="session.CurrentService" render="Label" position="450,550" size="790,25" zPosition="3" font="Bold;20" halign="center" valign="center" backgroundColor="Black" transparent="1">
-      <convert type="ServicePosition">Position,Detailed</convert>
-    </widget>
-    <ePixmap pixmap="infinityHD-nbox/mp_buttons.png" position="100,582" size="300,50" zPosition="1" alphatest="on" />
-    <widget name="Timeline" position="479,587" size="696,20" zPosition="3" backgroundColor="Grey" pointer="skin_default/position_arrow.png:3,5" foregroundColor="Black" />
-    <eLabel text="OK = Menu" position="1060,630" size="140,22" zPosition="1" font="Bold;20" backgroundColor="Black" transparent="1" />
-  </screen>
   <!-- */ Other Plugins -->
   <!--/* MYTUBE -->
-  <screen name="MyTubePlayer" position="0,4" size="1280,720" title="InfoBar" backgroundColor="Transparent" flags="wfNoBorder" zPosition="-2">
+  <screen name="MyTubePlayer" position="0,0" size="1280,720" title="InfoBar" backgroundColor="Transparent" flags="wfNoBorder">
     <ePixmap position="center,485" zPosition="-1" size="1280,295" pixmap="infinityHD-nbox/infobar_2.png" />
     <widget source="session.CurrentService" render="Label" position="300,560" size="700,32" font="Bold;30" halign="center" valign="top" noWrap="1" backgroundColor="Black" transparent="1">
       <convert type="ServiceName">Name</convert>
