@@ -7,13 +7,13 @@ PluginLanguagePath = "Extensions/inHDcontroler/locale"
 def localeInit():
 	lang = language.getLanguage()[:2]
 	os.environ["LANGUAGE"] = lang
-	print "[FP] set language to ", lang
+	print "[inHD] set language to", lang
 	gettext.bindtextdomain(PluginLanguageDomain, resolveFilename(SCOPE_PLUGINS, PluginLanguagePath))
 
 def _(txt):
 	t = gettext.dgettext(PluginLanguageDomain, txt)
 	if t == txt:
-		print "[FP] fallback to default translation for", txt
+		print "[inHD] fallback to default translation for", txt
 		t = gettext.gettext(txt)
 	return t
 
